@@ -13,6 +13,11 @@ connectDB();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://nithishnarravula.dev",
+  "https://www.nithishnarravula.dev",
+];
 // --- Core middleware -------------------------------------------------
 
 // Allow the React dev server (and later, your deployed frontend) to call
@@ -20,7 +25,12 @@ const app = express();
 // request due to CORS policy.
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+      return callback(new Error("Not allowed by CORS"));
+    },
   })
 );
 
