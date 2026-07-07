@@ -31,7 +31,7 @@ import ThemeToggle from "../components/ThemeToggle.jsx";
  * Until then, treat this admin page as a local/dev convenience only.
  */
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "changeme123";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 function LoginGate({ onSuccess }) {
   const [password, setPassword] = useState("");

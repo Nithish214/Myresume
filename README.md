@@ -101,13 +101,13 @@ npm install
 MONGO_URI=mongodb://127.0.0.1:27017/resume-website
 PORT=5000
 CLIENT_URL=http://localhost:5173
-ADMIN_PASSWORD=changeme123
+ADMIN_PASSWORD=Nithish@123
 ```
 
 **client/.env** (copy from `client/.env.example`):
 ```
 VITE_API_URL=http://localhost:5000/api
-VITE_ADMIN_PASSWORD=changeme123
+VITE_ADMIN_PASSWORD=Nithish@123
 ```
 
 > Keep `ADMIN_PASSWORD` and `VITE_ADMIN_PASSWORD` the same value if you want
