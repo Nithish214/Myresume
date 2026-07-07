@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: resume-backend
+    restart: always
+    env_file:
+      - .env
+    expose:
+      - "5000"
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api
+    container_name: resume-frontend
+    restart: always
+    expose:
+      - "80"
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:alpine
+    container_name: resume-nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - frontend
+      - backend

@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-graphite dark:bg-ink dark:text-slate-100;
+    @apply font-sans antialiased transition-colors duration-300;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-graphite dark:text-white;
+  }
+
+  /* Visible keyboard focus everywhere - accessibility floor, not optional */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #2DD4BF;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Respect users who've asked for less motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Eyebrow label used above section headings, e.g. "EXPERIENCE // LOG" */
+  .section-eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-signal-dark dark:text-signal;
+  }
+
+  .section-heading {
+    @apply font-display text-3xl sm:text-4xl font-bold mt-2 mb-4;
+  }
+
+  .card {
+    @apply bg-paperCard dark:bg-surface rounded-2xl border border-slate-200 dark:border-white/10
+           shadow-soft dark:shadow-softDark transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-glow hover:border-signal/40;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+           bg-graphite text-white dark:bg-signal dark:text-ink
+           font-semibold text-sm tracking-wide
+           hover:bg-signal-dark hover:text-ink dark:hover:bg-signal-light
+           transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+           border border-slate-300 dark:border-white/20
+           text-graphite dark:text-white
+           font-semibold text-sm tracking-wide
+           hover:border-signal hover:text-signal-dark dark:hover:text-signal
+           transition-colors duration-200;
+  }
+
+  .tag-chip {
+    @apply font-mono text-xs px-2.5 py-1 rounded-md
+           bg-slate-100 text-graphite/80
+           dark:bg-white/5 dark:text-slate-200
+           border border-slate-200 dark:border-white/10;
+  }
+}
+
+/* Simple scroll-reveal: elements start hidden, JS (useReveal hook) adds
+   the "is-visible" class once they enter the viewport. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
