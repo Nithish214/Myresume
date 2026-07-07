@@ -79,7 +79,7 @@ export default function Hero() {
                 <span className="absolute inline-flex h-full w-full rounded-full bg-signal opacity-75 animate-pulseRing" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-signal-dark dark:bg-signal" />
               </span>
-              available
+              inprogress
             </span>
           </div>
 
