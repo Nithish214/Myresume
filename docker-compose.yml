@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  backend:
+    backend:
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -9,8 +9,8 @@ services:
     restart: always
     env_file:
       - .env
-    expose:
-      - "5000"
+    ports:
+      - "127.0.0.1:5000:5000"
 
   frontend:
     build:
@@ -20,8 +20,8 @@ services:
         VITE_API_URL: /api
     container_name: resume-frontend
     restart: always
-    expose:
-      - "80"
+    ports:
+      - "127.0.0.1:3000:80"
     depends_on:
       - backend
 
