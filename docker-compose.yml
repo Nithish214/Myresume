@@ -12,7 +12,7 @@ services:
     ports:
       - "127.0.0.1:5000:5000"
 
-  frontend:
+    frontend:
     build:
       context: ./client
       dockerfile: Dockerfile
@@ -25,7 +25,7 @@ services:
     depends_on:
       - backend
 
-  nginx:
+    nginx:
     image: nginx:alpine
     container_name: resume-nginx
     restart: always
