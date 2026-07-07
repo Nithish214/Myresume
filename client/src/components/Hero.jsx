@@ -100,8 +100,6 @@ export default function Hero() {
           </dl>
 
           <div className="mt-6 pt-5 border-t border-slate-100 dark:border-white/10 font-mono text-xs text-slate-500 dark:text-slate-400 flex items-center justify-between">
-            <span>role: cloud_ops / sre</span>
-            <span>region: eu-west-1 (dublin)</span>
           </div>
         </div>
       </div>
