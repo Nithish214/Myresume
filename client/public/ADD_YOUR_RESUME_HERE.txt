@@ -1,5 +1,0 @@
-Put your actual resume file here as "resume.pdf".
-
-The "Download Resume" button in Hero.jsx links to /resume.pdf, which Vite
-serves directly from this public/ folder. Once you add resume.pdf here,
-the download button will work automatically - no code changes needed.

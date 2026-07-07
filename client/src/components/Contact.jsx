@@ -142,7 +142,6 @@ export default function Contact() {
     <section id="contact" className="px-6 sm:px-8 py-20 sm:py-28">
       <div className="max-w-4xl mx-auto">
         <div ref={headerRef} className="reveal mb-10 text-center sm:text-left">
-          <p className="section-eyebrow">// Get in touch</p>
           <h2 className="section-heading">
             Hiring or recruiting? Leave your details and I'll get back to you.
           </h2>
@@ -191,7 +190,7 @@ export default function Contact() {
                 autoComplete="email"
                 value={values.workEmail}
                 onChange={handleChange}
-                placeholder="jane@acme.com"
+                placeholder="jane@gmail.com"
                 className={inputClasses(errors.workEmail)}
                 aria-invalid={Boolean(errors.workEmail)}
               />

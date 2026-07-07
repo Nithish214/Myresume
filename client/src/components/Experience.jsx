@@ -65,7 +65,7 @@ export default function Experience() {
     <section id="experience" className="px-6 sm:px-8 py-20 sm:py-28 bg-slate-50/60 dark:bg-surface/30">
       <div className="max-w-6xl mx-auto">
         <div ref={headerRef} className="reveal mb-14">
-          <p className="section-eyebrow">// Experience log</p>
+  
           <h2 className="section-heading">Where I've operated</h2>
         </div>
 

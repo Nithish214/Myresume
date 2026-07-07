@@ -22,7 +22,6 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_0.85fr] gap-16 items-center">
         {/* Left column: identity + CTAs */}
         <div>
-          <p className="section-eyebrow">Cloud Ops // SRE Engineer</p>
 
           <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] font-extrabold mt-3 text-graphite dark:text-white">
             {profile.name}

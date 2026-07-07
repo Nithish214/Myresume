@@ -61,7 +61,6 @@ export default function Projects() {
     <section id="projects" className="px-6 sm:px-8 py-20 sm:py-28 bg-slate-50/60 dark:bg-surface/30">
       <div className="max-w-6xl mx-auto">
         <div ref={headerRef} className="reveal mb-14 max-w-2xl">
-          <p className="section-eyebrow">// Projects</p>
           <h2 className="section-heading">Things I've built</h2>
         </div>
 

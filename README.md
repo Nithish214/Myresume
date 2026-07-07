@@ -164,7 +164,7 @@ curl -X POST http://localhost:5000/api/contacts \
   -d '{
     "recruiterName": "Jane Doe",
     "companyName": "Acme Corp",
-    "workEmail": "jane@acme.com",
+    "workEmail": "jane@gmail.com",
     "phoneNumber": "+353 1 234 5678",
     "jobTitle": "Senior SRE",
     "message": "We have a role that matches your background.",

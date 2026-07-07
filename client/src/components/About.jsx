@@ -11,7 +11,6 @@ export default function About() {
         className="reveal max-w-6xl mx-auto grid md:grid-cols-[0.6fr_1fr] gap-10 md:gap-16 items-start"
       >
         <div>
-          <p className="section-eyebrow">// About</p>
           <h2 className="section-heading">Profile</h2>
         </div>
 

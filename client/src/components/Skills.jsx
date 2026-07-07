@@ -56,7 +56,6 @@ export default function Skills() {
     <section id="skills" className="px-6 sm:px-8 py-20 sm:py-28">
       <div className="max-w-6xl mx-auto">
         <div ref={headerRef} className="reveal mb-14 max-w-2xl">
-          <p className="section-eyebrow">// Capabilities</p>
           <h2 className="section-heading">Skills by domain</h2>
           <p className="text-slate-600 dark:text-slate-400">
             Grouped the way I actually use them - operating systems day to day,

@@ -38,7 +38,7 @@ export default function Navbar() {
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-signal-dark dark:bg-signal" />
           </span>
           {profile.name.split(" ").map((n) => n[0]).join("")}
-          <span className="text-slate-400 dark:text-slate-500">/status</span>
+          {/* <span className="text-slate-400 dark:text-slate-500"></span> */}
         </a>
 
         {/* Desktop links */}
