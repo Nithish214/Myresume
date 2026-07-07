@@ -72,7 +72,7 @@ export default function Hero() {
         <div className="card p-6 sm:p-7 relative">
           <div className="flex items-center justify-between mb-6">
             <span className="font-mono text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400">
-              engineer_status.json
+              Milestone Achieved
             </span>
             <span className="flex items-center gap-1.5 font-mono text-xs text-signal-dark dark:text-signal">
               <span className="relative flex h-2 w-2">
