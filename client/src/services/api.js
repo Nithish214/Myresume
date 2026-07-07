@@ -28,5 +28,13 @@ export const fetchContacts = async () => {
   const response = await api.get("/contacts");
   return response.data;
 };
-
+/**
+ * Deletes a single recruiter contact submission by its Mongo _id -
+ * used by the admin dashboard's delete button.
+ * @param {string} id - the contact's MongoDB _id
+ */
+export const deleteContact = async (id) => {
+  const response = await api.delete(`/contacts/${id}`);
+  return response.data;
+};
 export default api;

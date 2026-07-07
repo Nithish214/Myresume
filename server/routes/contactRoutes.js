@@ -3,6 +3,7 @@ import {
   createContact,
   getContacts,
   getContactById,
+  deleteContact,
 } from "../controllers/contactController.js";
 import {
   contactValidationRules,
@@ -20,5 +21,8 @@ router.get("/", getContacts);
 
 // GET /api/contacts/:id - fetch a single submission (admin/testing)
 router.get("/:id", getContactById);
+
+// DELETE /api/contacts/:id - delete a single submission (admin/testing)
+router.delete("/:id", deleteContact);
 
 export default router;

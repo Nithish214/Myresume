@@ -8,8 +8,10 @@ import {
   Briefcase,
   Clock,
   AlertCircle,
+  Trash2,
+  Loader2,
 } from "lucide-react";
-import { fetchContacts } from "../services/api.js";
+import { fetchContacts, deleteContact as deleteContactRequest } from "../services/api.js";
 import ThemeToggle from "../components/ThemeToggle.jsx";
 
 /**
@@ -31,7 +33,7 @@ import ThemeToggle from "../components/ThemeToggle.jsx";
  * Until then, treat this admin page as a local/dev convenience only.
  */
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "Nithish@123";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 function LoginGate({ onSuccess }) {
   const [password, setPassword] = useState("");
@@ -89,11 +91,22 @@ function LoginGate({ onSuccess }) {
   );
 }
 
-function ContactCard({ contact }) {
+function ContactCard({ contact, onDelete, isDeleting }) {
   const submittedDate = new Date(contact.createdAt).toLocaleString(undefined, {
     dateStyle: "medium",
     timeStyle: "short",
   });
+
+  const handleDeleteClick = () => {
+    // A native confirm() is enough here since this is a low-traffic admin
+    // tool - swap for a custom modal if you want a nicer visual later.
+    const confirmed = window.confirm(
+      `Delete the submission from ${contact.recruiterName} (${contact.companyName})? This can't be undone.`
+    );
+    if (confirmed) {
+      onDelete(contact._id);
+    }
+  };
 
   return (
     <div className="card p-5 sm:p-6">
@@ -106,9 +119,25 @@ function ContactCard({ contact }) {
             <Building2 size={14} /> {contact.companyName}
           </p>
         </div>
-        <span className="font-mono text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1.5">
-          <Clock size={12} /> {submittedDate}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1.5">
+            <Clock size={12} /> {submittedDate}
+          </span>
+          <button
+            onClick={handleDeleteClick}
+            disabled={isDeleting}
+            aria-label={`Delete submission from ${contact.recruiterName}`}
+            className="h-8 w-8 flex items-center justify-center rounded-lg border border-slate-200 dark:border-white/10
+                       text-slate-400 hover:text-red-500 hover:border-red-300 dark:hover:border-red-500/40
+                       transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isDeleting ? (
+              <Loader2 size={14} className="animate-spin" />
+            ) : (
+              <Trash2 size={14} />
+            )}
+          </button>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-x-5 gap-y-1.5 font-mono text-xs text-slate-500 dark:text-slate-400 mb-3">
@@ -140,6 +169,8 @@ function Dashboard() {
   const [contacts, setContacts] = useState([]);
   const [status, setStatus] = useState("loading"); // loading | success | error
   const [errorMessage, setErrorMessage] = useState("");
+  const [deletingId, setDeletingId] = useState(null);
+  const [deleteError, setDeleteError] = useState("");
 
   const loadContacts = async () => {
     setStatus("loading");
@@ -153,6 +184,23 @@ function Dashboard() {
         err?.response?.data?.message ||
           "Couldn't load submissions. Is the backend server running?"
       );
+    }
+  };
+
+  const handleDelete = async (id) => {
+    setDeleteError("");
+    setDeletingId(id);
+    try {
+      await deleteContactRequest(id);
+      // Remove it from local state immediately rather than re-fetching the
+      // whole list - keeps the UI snappy and avoids an extra round trip.
+      setContacts((prev) => prev.filter((c) => c._id !== id));
+    } catch (err) {
+      setDeleteError(
+        err?.response?.data?.message || "Couldn't delete that submission. Try again."
+      );
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -191,6 +239,12 @@ function Dashboard() {
           </p>
         )}
 
+        {deleteError && (
+          <p role="alert" className="flex items-center gap-2 text-sm text-red-500 mb-4">
+            <AlertCircle size={16} /> {deleteError}
+          </p>
+        )}
+
         {status === "success" && contacts.length === 0 && (
           <p className="text-sm text-slate-500 dark:text-slate-400">
             No submissions yet - they'll show up here as soon as someone uses
@@ -201,7 +255,12 @@ function Dashboard() {
         {status === "success" && contacts.length > 0 && (
           <div className="space-y-4">
             {contacts.map((contact) => (
-              <ContactCard key={contact._id} contact={contact} />
+              <ContactCard
+                key={contact._id}
+                contact={contact}
+                onDelete={handleDelete}
+                isDeleting={deletingId === contact._id}
+              />
             ))}
           </div>
         )}

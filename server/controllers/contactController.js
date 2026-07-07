@@ -86,3 +86,30 @@ export const getContactById = async (req, res, next) => {
     next(error);
   }
 };
+/**
+ * @route   DELETE /api/contacts/:id
+ * @desc    Permanently delete a single recruiter contact submission
+ * @access  Intended for the admin dashboard only. Like GET /api/contacts,
+ *          this route has no server-side auth check yet - see the README
+ *          for notes on adding JWT-based auth before deploying publicly.
+ */
+export const deleteContact = async (req, res, next) => {
+  try {
+    const contact = await Contact.findByIdAndDelete(req.params.id);
+
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: "Contact submission not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Contact submission deleted",
+      data: contact,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
