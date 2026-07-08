@@ -94,15 +94,6 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-            <li>
-              <Link
-                to="/admin"
-                onClick={closeMenu}
-                className="block text-slate-400 hover:text-signal-dark dark:hover:text-signal"
-              >
-                Admin
-              </Link>
-            </li>
           </ul>
         </div>
       )}
