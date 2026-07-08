@@ -55,16 +55,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <Link
-            to="/admin"
-            className="font-mono text-xs uppercase tracking-wider text-slate-400 hover:text-signal-dark dark:hover:text-signal transition-colors"
-          >
-            Admin
-          </Link>
-        </div>
-
         {/* Mobile: theme toggle always visible, menu button opens the sheet */}
         <div className="flex items-center gap-3 md:hidden">
           <ThemeToggle />
