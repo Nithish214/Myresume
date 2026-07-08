@@ -38,7 +38,7 @@ const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "Nithish@123"; // 
 function LoginGate({ onSuccess }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-console.log("Expected password:", ADMIN_PASSWORD);
+// console.log("Expected password:", ADMIN_PASSWORD);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
