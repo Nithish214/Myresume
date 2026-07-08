@@ -19,7 +19,7 @@ export const profile = {
 
 export const stats = [
   { label: "Years Experience", value: "3+" },
-  { label: "Production APIs Shipped", value: "15+" },
+  { label: "Production APIs Shipped", value: "17+" },
   { label: "Latency Reduced", value: "25%" },
   { label: "MTTR / Manual Effort Cut", value: "35%" },
 ];
@@ -56,7 +56,7 @@ export const experience = [
     points: [
       "Engineered backend services and RESTful APIs using Java Spring Boot and Node.js on AWS.",
       "Worked across MongoDB, PostgreSQL, MySQL, Oracle IMS/RMS and DynamoDB.",
-      "Delivered 15+ production APIs, improving system efficiency by roughly 10% and cutting response times by roughly 15%.",
+      "Delivered 17+ production APIs, improving system efficiency by roughly 10% and cutting response times by roughly 15%.",
       "Architected real-time, event-driven messaging pipelines using AWS Lambda, SQS and Kafka.",
       "Implemented schema design, index tuning and data migration across relational and NoSQL systems.",
       "Built web and integration tools that exposed operational and reporting data to internal stakeholders.",
