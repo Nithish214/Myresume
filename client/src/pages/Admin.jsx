@@ -213,7 +213,7 @@ function Dashboard() {
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div>
-            <p className="section-eyebrow">// Admin</p>
+            
             <h1 className="font-display text-2xl sm:text-3xl font-bold text-graphite dark:text-white">
               Recruiter Submissions
             </h1>
