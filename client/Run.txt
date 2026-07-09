@@ -1,0 +1,16 @@
+cd C:\dev\resume-website\client
+
+# 1. Edit files under src/ (e.g. resumeData.js for content, any component for design)
+
+# 2. Test locally first
+npm run dev
+# check http://localhost:5173 before deploying anything
+
+# 3. Build for production
+npm run build
+
+# 4. Upload the new build to S3
+aws s3 sync dist/ s3://nithishnarravula-resume-site --delete
+
+# 5. Invalidate CloudFront's cache (IMPORTANT - see why below)
+aws cloudfront create-invalidation --distribution-id E56AKHQOEY2IU --paths "/*"

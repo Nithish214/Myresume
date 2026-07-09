@@ -41,6 +41,7 @@ function LoginGate({ onSuccess }) {
 // console.log("Expected password:", ADMIN_PASSWORD);
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(ADMIN_PASSWORD);
     if (password === ADMIN_PASSWORD) {
       setError("");
       onSuccess();
